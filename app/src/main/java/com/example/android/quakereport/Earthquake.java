@@ -1,22 +1,22 @@
 package com.example.android.quakereport;
 
 /**
- * Created by Othesius on 3/11/17.
+ * Earthquake object stores earthquake information
  */
 
 public class Earthquake {
 
-    private int mMagnitude;
+    private String mMagnitude;
     private String mLocation;
     private String mDate;
 
-    public Earthquake(int magnitude, String location, String date) {
+    public Earthquake(String magnitude, String location, String date) {
         mMagnitude = magnitude;
         mLocation = location;
         mDate = date;
     }
 
-    public int getMagnitude() {
+    public String getMagnitude() {
         return mMagnitude;
     }
 

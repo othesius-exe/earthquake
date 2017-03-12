@@ -22,4 +22,6 @@
 
     <!-- Accent color of the app -->
     <color name="colorAccent">#10CAC9</color>
+
+    <color name="primary_text">#000000</color>
 </resources>

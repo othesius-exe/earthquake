@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/quake_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/quake_layout">
+    android:orientation="horizontal"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/magnitude"
+        style="@style/list_item"
         android:layout_width="0dp"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        tools:text="8.9">
 
     </TextView>
 
     <TextView
         android:id="@+id/location"
+        style="@style/list_item"
         android:layout_width="0dp"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:layout_weight="2"
+        tools:text="Auburn, IN">
 
     </TextView>
 
     <TextView
         android:id="@+id/date"
+        style="@style/list_item"
         android:layout_width="0dp"
-        android:layout_height="50dp">
+        android:layout_height="50dp"
+        android:layout_weight="2"
+        tools:text="July 30, 2050">
 
     </TextView>
 
-</RelativeLayout>
+</LinearLayout>
