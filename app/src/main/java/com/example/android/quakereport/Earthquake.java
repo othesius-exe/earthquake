@@ -1,22 +1,25 @@
 package com.example.android.quakereport;
-
 /**
  * Earthquake object stores earthquake information
  */
 
 public class Earthquake {
 
-    private String mMagnitude;
+    private double mMagnitude;
     private String mLocation;
     private String mDate;
+    private String mTime;
+    private String mUrl;
 
-    public Earthquake(String magnitude, String location, String date) {
+    public Earthquake(double magnitude, String location, String date, String time, String url) {
         mMagnitude = magnitude;
         mLocation = location;
         mDate = date;
+        mTime = time;
+        mUrl = url;
     }
 
-    public String getMagnitude() {
+    public double getMagnitude() {
         return mMagnitude;
     }
 
@@ -28,10 +31,20 @@ public class Earthquake {
         return mDate;
     }
 
+    public String getTime() {
+        return mTime;
+    }
+
+    public String getUrl() {
+        return mUrl;
+    }
+
     @Override
     public String toString() {
         return "Magnitude: " + mMagnitude + "\n" +
                 "Location: " + mLocation + "\n" +
-                "Date: " + mDate;
+                "Date: " + mDate + "\n" +
+                "Time: " + mTime + "\n" +
+                "URL: " + mUrl;
     }
 }

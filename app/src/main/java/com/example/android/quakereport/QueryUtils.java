@@ -6,7 +6,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Helper methods related to requesting and receiving earthquake data from USGS.
@@ -58,14 +60,36 @@ public final class QueryUtils {
 
             //Iterate through the array to find each key and its corresponding value
             for (int i = 0; i < feature.length(); i ++) {
+                // Temporarily stores individual earthquake feature in variable q
                 JSONObject q = feature.getJSONObject(i);
+                // Finds the properties Key for each feature and stores it in properties
                 JSONObject properties = q.getJSONObject("properties");
-                String mag = properties.getString("mag");
+                // Extracts the mag property and stores it in a double
+                double mag = properties.getDouble("mag");
+                // Extracts the place property and stores as a string
                 String place = properties.getString("place");
+                // Extracts the time property and stores as a string
                 String time =  properties.getString("time");
+                // Extracts the url property and stores as a string
+                String url = properties.getString("url");
 
-                Earthquake newQuake = new Earthquake(mag, place, time);
+                // Takes time variable and converts it to a long type
+                long timeInMilliseconds = Long.parseLong(time);
+                // Creates a date object from the time variable
+                Date dateObject = new Date(timeInMilliseconds);
 
+                // Creates a date formatter from dateObject and formats the date as Month, day, year
+                SimpleDateFormat dateFormatter = new SimpleDateFormat("MMM dd, yyyy");
+                String date = dateFormatter.format(dateObject);
+
+                // Creates a date formatter from date object and formats date as time hour/minute
+                SimpleDateFormat timeFormatter = new SimpleDateFormat("h:mm a");
+                String timeFormatted = timeFormatter.format(dateObject);
+
+                // Creates a new Earthquake object on each iteration from each feature and its properties
+                Earthquake newQuake = new Earthquake(mag, place, date, timeFormatted, url);
+
+                // Adds each earthquake to the ArrayList<Earthquake>
                 earthquakes.add(newQuake);
             }
         } catch (JSONException e) {
